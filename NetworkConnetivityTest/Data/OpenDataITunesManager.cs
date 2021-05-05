@@ -7,11 +7,11 @@ using Newtonsoft.Json;
 
 namespace NetworkConnetivityTest.Data
 {
-    class OpenDataManager
+    class OpenDataITunesManager
     {
-        private string URL = "https://sg.media-imdb.com/suggests/l/lord.json";
+        private string URL = "https://itunes.apple.com/us/rss/topmovies/limit=25/json";
 
-        public OpenDataManager()
+        public OpenDataITunesManager()
         {
 
         }
@@ -19,7 +19,8 @@ namespace NetworkConnetivityTest.Data
         private HttpClient GetClient()
         {
             HttpClient client = new HttpClient();
-            // Login Information and confirmation.
+            // Login information and confirmation.
+
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             return client;
         }
@@ -29,10 +30,6 @@ namespace NetworkConnetivityTest.Data
             HttpClient client = GetClient();
 
             string stringResult = await client.GetStringAsync(URL);
-            stringResult = stringResult.Replace("imdb$lord(", "");
-
-            // Remove the last character in the string.
-            stringResult = stringResult.Remove(stringResult.Length - 1);
 
             return JsonConvert.DeserializeObject<OpenDataITunes>(stringResult);
         }

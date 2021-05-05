@@ -11,7 +11,11 @@ namespace NetworkConnetivityTest
 {
     public partial class MainPage : ContentPage
     {
-        private OpenDataManager openDataManager = new OpenDataManager();
+        // IMDB Json
+        //private OpenDataManager openDataManager = new OpenDataManager();
+
+        // Itunes Json
+        private OpenDataITunesManager openDataITunesManager = new OpenDataITunesManager();
 
 
         public MainPage()
@@ -21,8 +25,8 @@ namespace NetworkConnetivityTest
 
         protected async override void OnAppearing()
         {
-            OpenDataItem itemCollection = await openDataManager.GetAll();
-            lvIMDB.ItemsSource = itemCollection.d;
+            OpenDataITunes itemCollection = await openDataITunesManager.GetAll();
+            //lvIMDB.ItemsSource = itemCollection.d;
         }
     }
 }

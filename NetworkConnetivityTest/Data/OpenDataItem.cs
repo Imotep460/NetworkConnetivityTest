@@ -26,7 +26,7 @@ namespace NetworkConnetivityTest.Data
         public string yr { get; set; }
     }
 
-    public class OpenDataItem
+    public class OpenDataITunes
     {
         public int v { get; set; }
         public string q { get; set; }
